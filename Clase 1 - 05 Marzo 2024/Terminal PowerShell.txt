@@ -1,0 +1,151 @@
+--------------------------------------------------------------------
+-- COMANDOS MAS IMPORTANTES para Data scientist y Data Engineers--
+1. pwd 
+Ver directorio actual
+2. whoami
+Nombre de computo
+3. help
+brinda la ayuda de distintos comandos
+e.g help pwd
+e.g help ls
+e.g help cp
+Observa que -L, -P, -W se le llaman banderas usualmente (pueden ser con minusculas)
+4. clear 
+Borra todo de la terminal
+5. ls
+ls -Directory (solo directorios)
+ls -File (solo archivos)
+ls -File -Filter ".txt" (solo archivos que terminen en .txt"
+ls -File -Filter "U*" (que empiezen por U)
+ls -File | Where-Object { $_.Length -lt 1MB } (archivos que pesen menos de 1MB)
+ls -File | Sort-Object -Property Length -Descending | Select-Object -First 1 (archivo mas pesado)
+ls -File | Sort-Object -Property Length | Select-Object -First 1 (archivo menos pesado)
+
+List the files in the directory
+6. cd 
+cd "Curso Data Engineering"
+cd . se queda en el directorio actual 
+cd .. retroce un nivel en el directorio actual
+cd ../..
+
+7. touch (No funciona en windows)
+Bash: touch hola.txr
+Para windows: New-Item hola.txt
+----- creemos un json---------
+New-Item -Path "hola.json" -ItemType File -Value '{ "message": "Hola, mundo!" }' 
+----- creemos un archivo .py -----------
+New-Item -Path "hello.py" -ItemType File -Value 'print("Hello, World!")'
+
+8. echo 
+Guardar con contenido o imprimir mensajes
+echo "Hola mundo"
+--- Guardando archivo ----
+echo "hola como estas" > hola_david.txt
+cat hola_David.txt
+-- Agregando informacion a archivo existente -----
+echo "hola de nuevo " >> hola_david.txt
+cat hola_David.txt
+-- Guardando variables-- 
+$name ="David"
+echo "Hola, $name!"
+
+
+9. cat
+Ver contenido
+cat hola_david.txt
+-- Ver algunas lineas --
+cat hola_david.txt -TotalCount 1
+cat hola_david.txt -TotalCount 2
+-- Ultima linea --
+cat hola_david.txt -Tail 1
+
+10. mkdir :make directory 
+-- Un directorio --
+make DavidT
+-- Multiples directorios --
+mkdir David1, David2, David3
+-- Creacion con source target --
+mkdir -Path "C:/Users/Windows/Desktop/Bootcamp-DS-2023-II/Clase 1 - 4 Jul 2023/DavidJ"
+-- Directorios heredados --
+mkdir -Path "ParentDirectory\ChildDirectory"
+
+11. rmdir 
+Solo remueve directorios vacios 
+rmdir DavidT 
+-- Remover directorio con contenido --
+cd David 2
+echo "david" > hola.txt
+cd ..
+rmdir -Recurse David2
+-- Remover con prompt antes de ejecutar --
+rmdir -Recurse -Confirm David3
+-- Remover varios directorios --
+rmdir DavidJ, ParentDirectory
+-- Quitar condicion de permiso de borrar --
+mkdir David
+rmdir -Path "David" -Recurse -Confirm:$false
+
+
+12. Borrar archivos 
+rm hola.txt
+-- Borrar multiples --
+rm hello.py, hola.json
+
+13. Formar de borrar en general carpetas 
+mkdir vacia
+rm -r vacia/ (Borrar directorio)
+rm -rf archivo (Borrar archivos que esten ocupados o en memoria)
+
+14. mv 
+mkdir api_data 
+mv hola_david.txt api_data/ 
+ls
+cd api_data
+ls 
+-- Moverlo otra vez--
+mv hola_david.txt ..
+cd ..
+ls 
+
+15. renombrar archivos 
+mv hola_david.txt api_data/ 
+cd api_data 
+mv hola_david.txt script.json
+
+16. cp: copir archivos 
+cp script.json ../
+-- Si quieres que tenga otro nombre -- 
+cp script.json ../data.json
+
+17. Copiar carpetas con otro nombre 
+cd.. 
+cp -r api_data david_O
+
+18. find (no funciona en powershell)
+buscar archivos pero con nombre completo
+-- gci : alias de Get-ChildItem--
+gci script.json
+gci s* 
+Busqueda con patrones de nombre o tamaño
+gci -r | where Name -match '\.json$'
+gci -r | where Length -gt 3
+
+19. ps 
+Listar procesos activos (como ver admnistrador de tareas)
+
+20. history
+history -Count 10 (ultimos 10 comandos)
+
+21. alias 
+Para dedicar comandos tipo (pero solo en git Bash)
+alias david="touch david.json"
+unalias david 
+
+
+
+# Alternativas para usar Python
+1. Google Colab >>> Check!
+2. Github >> Check
+3. Anaconda (Jupyter notebook/Jupyter Lab) >> Check
+4. Python base + Editor de texto (e.g Visual Studio) >> Check
+5. Python > Sublime Text
