@@ -1,0 +1,154 @@
+### Fase: comandes base
+1. git --version
+2. git --help 
+
+## Fase 2: creando directorio y archivos de prueba conectando a git
+3. cd Desktop
+4. mkdir "Repo prueba"
+5. cd "Repo prueba"
+6. ls
+7. echo "print('hola mundo')" > script.py
+8. cat script.py
+# ver configuracion de variables basicas
+9. git config --global --list
+# si no tienes configurado tu email y nombre deberas hacerlo con esto
+10. git config --global user.name "DavidBU" 
+11. git config --global user.email "juanpepito@gmail.com"
+# inicializamos el repositorio
+12. git init 
+# ver la carpeta .git para verlo (oculto)
+13. git branch --show-current 
+# Ramas en GIT: permiten almacenar un flujo dado
+14. git branch -m main
+# cambiemos el nombre de esta rama
+15. git branch --show-current 
+16. git status
+17. git add script.py
+18. git status
+19. git commit -m "Primer commit" 
+# Guardamos nuestra primera foto (-m = message lanzar la foto)
+20. git log
+# Nos permite ver todos los cambios que tengamos en el repo
+21.  echo "Hola soy David" > Hola.txt
+# creamos otro archivo
+22. ls
+23. git add Hola.txt
+24. git commit -m "Segundo commit"
+# Segunda foto de nuestro repo
+25. git log
+# Deberas tener dos fotos ahora y cada uno con un hash distinto, la rama ha avanzado 
+26. Abramos el archivo Hoa.txt y cambiemos algo
+27. git status
+# te avisa que cambiaste algo
+27. git checkout Hola.txt
+28 cat Hola.txt
+# esto restaura los cambios 
+29. git log --graph
+30. git log --graph --pretty=oneline
+31. git log --graph --decorate --all --oneline
+32. git config --global alias.tree "log --graph --decorate --all --oneline"
+# esto guarda un alias dado
+33. git config --list
+# te muestra toda la configuracion y alias que tengas (wq para salir)
+34. git tree
+35. notepad. gitignore
+# configurar archivos para no ser tenidos en cuenta
+36. Agregar esto: **/F.txt
+37. echo "Tu eres yo" > F.txt
+38. git status
+# observen que pesar de que tenemos el F.txt no se tiene en cuenta
+39. git add .gitignore
+40. git commit -m "Agregado git ignore"
+# tercera foto que tenemos
+41. git tree
+42. git checkout 6ef9193
+# leamos el mensaje que sale
+43. git log
+# veras que estamos en la foto inicial
+44. git tree
+# veras que nuestro HEAD esta en el primer commit
+45. git checkout eff0c06
+46. git tree
+# perfecto volvimos a nuestro estado final
+47. git brach login
+# crea una nueva rama en base al punto en el que estabamos
+48. git switch login
+# se posiciona
+49. git tree
+50. echo "print('Login')" > Login.py 
+# Creemos un nuevo archivo Login.py
+51. ls
+50. git status
+51. git add .
+52. git commit -m "Login"
+53. git log
+# mira el posicionamiento donde estamos ahora (estamos independiente de la rama main ya)
+54. git switch main 
+55. ls
+# veras que no aparece el archivo login
+56. echo "Hola OP" > T.py
+57. ls
+58. git commit -m "Cuarto commit"
+# cuarta foto de main
+59. git log
+# veras que no aparece nada de login
+60. git switch login
+# nos movemos a nuestra otra rama
+61. ls
+62. git merge main 
+# unimos el trabajo de las dos ramas 
+63. :wq para cerrar el editor
+64. git status
+65. git log
+66. git tree
+
+
+## Fase 3: Creemos nuestro repo de DS en git y subamoslo a Github
+1. cd Desktop 
+2. mkdir Bootcamp_DS_2023I
+3. cd Bootcamp_DS_2023I
+4. Crea una cuenta en Github: "Sign up" 
+5. Generar clave SSH con estos pasos: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+6. Añadir tu clave en github: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+7. Creamos el repo en Github
+8.  mkdir "Clase 1/"
+9.  mkdir "Clase 2/"
+10. ls 
+# Creamos nuestras carpetas Clase 0 y Clase 1 
+11. git init
+12. git remote add origin git@github.com:dfbustosus/BootcampDS_2023I.git
+13. git status
+14. echo "Hola.txt" > texto.txt
+15. git add .
+16. git commit -m "Primer commit"
+17. git branch -m main
+# cambiamos el nombre para que sea la misma rama
+18. git branch
+19. git fetch
+20. git merge --allow-unrelated-histories origin/main
+21. git push origin main
+# "pull" es para llevar cambios de repo remoto a local
+#"push" se usa para enviar cambios de repo local a remoto.
+
+## Forma más sencilla
+1. git clone https://github.com/dfbustosus/BootcampDS_2023I.git "Bootcamp Ds 2023-I"
+2. cd "Bootcamp Ds 2023-I"
+3. ls
+4. git status
+5. echo "Hola" > Holamundo.txt
+6. ls
+7. git add. 
+8. git commit -m "Primer commit"
+9. git branch
+10. git push origin main
+
+
+
+
+
+
+
+
+
+
+
