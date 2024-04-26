@@ -12,7 +12,7 @@
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_1a7dd0805216d3d053da902d69c68306 {
+                #map_723e1ffabb598d6bed726c54bcadfc51 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,14 +39,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_1a7dd0805216d3d053da902d69c68306" ></div>
+            <div class="folium-map" id="map_723e1ffabb598d6bed726c54bcadfc51" ></div>
         
 </body>
 <script>
     
     
-            var map_1a7dd0805216d3d053da902d69c68306 = L.map(
-                "map_1a7dd0805216d3d053da902d69c68306",
+            var map_723e1ffabb598d6bed726c54bcadfc51 = L.map(
+                "map_723e1ffabb598d6bed726c54bcadfc51",
                 {
                     center: [4.965, -72.0],
                     crs: L.CRS.EPSG3857,
@@ -60,39 +60,48 @@
 
         
     
-            var tile_layer_d3d4e66d30ef50f7dad99ce03a205abb = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_1a7dd0805216d3d053da902d69c68306);
+            var tile_layer_03721cdcc8d70975f010ee9ff72346fe = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
         
     
-            var marker_da7a0b306b56c3b4bcd9021a0eab8325 = L.marker(
+            tile_layer_03721cdcc8d70975f010ee9ff72346fe.addTo(map_723e1ffabb598d6bed726c54bcadfc51);
+        
+    
+            tile_layer_03721cdcc8d70975f010ee9ff72346fe.addTo(map_723e1ffabb598d6bed726c54bcadfc51);
+        
+    
+            var marker_6e5c2b5d155e1022505aa6d37f9887b0 = L.marker(
                 [4.598889, -74.080833],
                 {}
-            ).addTo(map_1a7dd0805216d3d053da902d69c68306);
+            ).addTo(map_723e1ffabb598d6bed726c54bcadfc51);
         
     
-        var popup_dacf677d703c2b8b8853bc8dbf1338f4 = L.popup({"maxWidth": "100%"});
+        var popup_8c0f49b71db1f5d934ddf4b421f8f5d0 = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_91c081290ae9bc0e7138e5bfe2cc59c3 = $(`<div id="html_91c081290ae9bc0e7138e5bfe2cc59c3" style="width: 100.0%; height: 100.0%;">Plaza X</div>`)[0];
-                popup_dacf677d703c2b8b8853bc8dbf1338f4.setContent(html_91c081290ae9bc0e7138e5bfe2cc59c3);
+                var html_260dbee6a4c8390e008324ca2b504d99 = $(`<div id="html_260dbee6a4c8390e008324ca2b504d99" style="width: 100.0%; height: 100.0%;">Plaza X</div>`)[0];
+                popup_8c0f49b71db1f5d934ddf4b421f8f5d0.setContent(html_260dbee6a4c8390e008324ca2b504d99);
             
         
 
-        marker_da7a0b306b56c3b4bcd9021a0eab8325.bindPopup(popup_dacf677d703c2b8b8853bc8dbf1338f4)
+        marker_6e5c2b5d155e1022505aa6d37f9887b0.bindPopup(popup_8c0f49b71db1f5d934ddf4b421f8f5d0)
         ;
 
         
     
     
-            marker_da7a0b306b56c3b4bcd9021a0eab8325.bindTooltip(
+            marker_6e5c2b5d155e1022505aa6d37f9887b0.bindTooltip(
                 `<div>
                      plaza X
                  </div>`,
                 {"sticky": true}
             );
+        
+    
+            tile_layer_03721cdcc8d70975f010ee9ff72346fe.addTo(map_723e1ffabb598d6bed726c54bcadfc51);
         
 </script>
 </html>
