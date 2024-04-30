@@ -1,0 +1,41 @@
+if (typeof window !== 'undefined') {
+    window.onerror = function handleUncaughtBrowserError(
+        message,
+        source,
+        lineno,
+        colno,
+        error
+    ) {
+        var stackString = '';
+        var isDarlaError = false;
+        var darlaJSPath = 's.yimg.com/rq/darla';
+
+        try {
+            if (error) {
+                stackString = JSON.stringify(error);
+            }
+        } catch (e) {}
+
+        if (source.indexOf(darlaJSPath) !== -1 || stackString.indexOf(darlaJSPath) !== -1) {
+            isDarlaError = true;
+        }
+
+        if (isDarlaError) {
+            var useImg = false;
+            var url = '/_td_api/beacon/error?beaconType=darlaJSError&site=finance';
+
+            if (window.navigator && typeof window.navigator.sendBeacon === 'function') {
+                if (!window.navigator.sendBeacon(url)) {
+                    useImg = true;
+                }
+            } else {
+                useImg = true;
+            }
+
+            if (useImg) {
+                var img = new Image();
+                img.src = url;
+            }
+        }
+    };
+}

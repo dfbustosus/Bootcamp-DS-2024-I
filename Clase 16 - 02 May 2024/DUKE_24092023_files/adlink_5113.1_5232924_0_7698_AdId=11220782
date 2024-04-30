@@ -1,0 +1,374 @@
+// Begin downloadedImpression tracker.
+(function() {
+  if (window.mraid || window.MRAID_ENV) {
+    return;
+  }
+
+  var eventName = 'downloadedImpression';
+  var platformEventType = 'di';
+  var creativeId = '915ef233-4c27-477d-aad5-676f4488e489';
+  var preview = false;
+  var deliveryGroupId = '19718201';
+  var deliveryGroups = {"0":{"thirdPartyTracking":{"events":[],"clicks":[]},"clicks":{"clickthrough":{"target":"_blank","url":"https://www.plus500.com/?id=127336&tags=YahooExternal_sr+Desktop&pl=2"}}},"19736233":{"thirdPartyTracking":{"events":[],"clicks":[]},"clicks":{"clickthrough":{"target":"_blank","url":"https://www.plus500.com/?id=127336&tags=YahooExternal_sr+MobileWeb&pl=2"}}}};
+
+  var getTrackingGroup = function(category) {
+    var group = [];
+    try {
+      group = deliveryGroups['0'][category];
+    } catch (e) {}
+    try {
+      var deliverySpecificGroup = deliveryGroups[deliveryGroupId][category];
+      return deliverySpecificGroup;
+    } catch (e) {
+      return group;
+    }
+  };
+
+  var getThirdPartyTrackingUrls = function(category, type, name) {
+    var trackingGroup = getTrackingGroup('thirdPartyTracking')[category] || [];
+    var urls = [];
+    for (var i = 0; i < trackingGroup.length; i++) {
+      if (trackingGroup[i].name === name && trackingGroup[i].type === type) {
+        urls.push(trackingGroup[i].url);
+      }
+    }
+    return urls;
+  };
+
+  var requestPixels = function(pixelUrls) {
+    for (var i = 0; i < pixelUrls.length; i++) {
+      var img = new Image;
+      img.src = pixelUrls[i];
+    }
+  };
+
+  var requestScripts = function(scriptUrls) {
+    for (var i = 0; i < scriptUrls.length; i++) {
+      var url = scriptUrls[i];
+      document.write('<scr' + 'ipt charset="utf-8" src="' + url + '"></scr' + 'ipt>');
+    }
+  };
+
+  function filterUrls(url) {
+    return !!url.match(/^http/i);
+  }
+
+  var pixelUrls = ['https://o.cmp.advertising.com/v3/se?et=di&en=downloadedImpression&crid=915ef233-4c27-477d-aad5-676f4488e489&cpid=1CFF&gdpr=0&euconsent=&us_privacy=&gpp=DBAA&gpp_sid=-1&e.crid=441388&e.plid=6517846&e.dgid=19718201&x.srvsrc=as&x.srvlid=6174685&x.srvcid=&impid=ZRAANUAGeKA&a.pid=1245621&a.fid=19718201&a.cid=19683804&a.nid=1771&a.sid=903301&a.bid=441388&a.plid=6517846&a.aid=1949920',
+    '']
+      .concat(getThirdPartyTrackingUrls('events', 'pixel', eventName))
+      .filter(filterUrls);
+  var scriptUrls = getThirdPartyTrackingUrls('events', 'script', eventName)
+      .filter(filterUrls);
+
+  if (!preview) {
+    requestPixels(pixelUrls);
+    requestScripts(scriptUrls);
+  }
+
+  window.com = window.com || {};
+  window.com.yahoo = window.com.yahoo || {};
+  window.com.yahoo.craft = window.com.yahoo.craft || {};
+  window.com.yahoo.craft.prependedTrackerEvents = window.com.yahoo.craft.prependedTrackerEvents || {};
+  var trackerEventsForInspectr = window.com.yahoo.craft.prependedTrackerEvents[creativeId] = window.com.yahoo.craft.prependedTrackerEvents[creativeId] || [];
+  trackerEventsForInspectr.push({
+    name: eventName,
+    platformEventType: platformEventType,
+    urls: {
+      pixels: pixelUrls,
+      scripts: scriptUrls
+    }
+  });
+
+}());
+// End downloadedImpression tracker.
+"use strict";function _typeof(t){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}!function(d){(d="object"!==_typeof(d)?{tplInit:{},labsInit:{},currentAds:[],publisherTools:{},utils:{},constants:{}}:d).constants||(d.constants={}),d.publisherTools||(d.publisherTools={}),d.tplInit||(d.tplInit={}),d.labsInit||(d.labsInit={}),d.currentAds||(d.currentAds=[]),d.utils||(d.utils={}),d.adConfig||(d.adConfig={}),d.constants={LABS_SAVEDATA:"LABS_SAVEDATA",LABS_READY:"LABS_READY"};var f=["https://cdn.yahoomedia.net/","https://cdn.cmp.advertising.com/","https://qa-cdn.cmp.advertising.com/","https://ad-formats.advertising.aol.com/","https://s.yimg.com/"];d.utils={logger:function(){},isBodyNode:function(t){return!(null==t||"object"!==_typeof(t)||!t.tagName)&&-1!==t.tagName.toLowerCase().indexOf("body")},findParentNodeByClassName:function(t,e){for(var n=e;null!=n&&!d.utils.isBodyNode(n);){if(-1<n.className.indexOf(t))return n;n=n.parentNode}return null},isWindowAccessible:function(t){if(void 0===t)return!1;try{return!!_typeof(t.document)}catch(t){return!1}},byId:function(t){return document.getElementById(t)},getTypeOf:function(t){return _typeof(t)},get delivrNamespace(){return window.com=window.com||{},window.com.oath=window.com.oath||{},window.com.oath.craft=window.com.oath.craft||{},window.com.oath.craft.delivery=window.com.oath.craft.delivery||{},window.com.oath.craft.delivery},getAdManager:function(t){var e=t.Format.adManagerName;return d.utils.getVersionedNS(t)[e]},getVersionedNS:function(t){var e="v".concat(t.Format.library.version),t=d.utils.delivrNamespace[e]||{};return window.com.oath.craft.delivery[e]=t,d.utils.delivrNamespace[e]},fetchCreativeId:function(){var t;return void 0===document.currentScript&&(document.currentScript=document.currentScript||(t=document.head.getElementsByTagName("script"))[t.length-1]),null!==document.currentScript?document.currentScript.getAttribute("data-creativeId"):null},loadMultipleScripts:function(t,e){var n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{},o=null!=e?e:function(){},r=Array.isArray(t)?t:[t],i=0;!function t(){r&&r[i]&&"string"==typeof r[i]?d.utils.loadScript(r[i],function(){(++i===r.length?o:t)()},n):o()}()},getQueryParam:function(t,e){e=e||window.location.href,t=t.replace(/[[\]]/g,"\\$&");e=new RegExp("[?&]".concat(t,"(=([^&#]*)|&|#|$)")).exec(e);return e?e[2]?decodeURIComponent(e[2].replace(/\+/g," ")):"":null},loadScript:function(t,e){var n,o,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{},i=null!=t?t:"",c=-1<i.indexOf(".css")?"link":"script",a="script"==c?"text/javascript":"text/css",t=(n=null!=(t=i)?t:"",o=!1,f.forEach(function(t){0===n.indexOf(t)&&(o=!0)}),o),u=null!=e?e:function(){},l=r.meta;if(!1===t||null==i)return u({script:null,meta:{error:"Missing URL field OR url now allowed."}}),null;var s=document.createElement(c);if("object"===_typeof(l)&&Object.keys(l).forEach(function(t){s.setAttribute("data-".concat(t),l[t])}),s.type=a,"script"==c?(a?s.onload=function(){u({script:s,meta:l})}:s.onreadystatechange=function(){"loaded"!==s.readyState&&"complete"!==s.readyState||(s.onreadystatechange=null,u({script:s,meta:l}))},s.src=i):(s.setAttribute("rel","stylesheet"),s.setAttribute("type","text/css"),s.setAttribute("href",i),s.onload=function(){u({script:s,meta:l})}),!1===r.autoAttach)return s;i=window;return(i="text/css"==a&&!0===r.addCSStoTop?d.utils.isWindowAccessible(window.top)?window.top:window:i).document.getElementsByTagName("head")[0].appendChild(s),s}},window.ACT=d}(window.ACT||{});;window.ACT.adConfig['labs915ef233-4c27-477d-aad5-676f4488e489'] = {
+  Integrator: {
+    partnerId: '1CFF',
+    previewMode: false,
+    creativeId: '441388'
+  },
+  AdServer: {
+    cacheBuster: '562170538',
+    clickPixel: '',
+    clickRedirect: '',
+    deliveryGroupId: '19718201',
+    networkId: '1771',
+    name: 'ADTECH',
+    proto: 'https',
+    region: 'emea',
+    campaignId: '19683804',
+    placementId: '6517846',
+    creativeId: '441388',
+    downloadedImpressionPixel: '',
+    impressionId: 'ZRAANUAGeKA'
+  },
+  User: {
+    geolocation: {
+      city: 'Quilpue',
+      country: 'CHILE',
+      zip: '',
+      lat: '',
+      lng: '',
+      state: 'valparaiso'
+    }
+  },
+  Publisher: {
+    host: window.location.href,
+    clickRedirect: 'https://6.ras.yahoo.com/adlink%7C5113.1%7C5232924%7C0%7C7698%7CAdId=11220782;BnId=1;guid=7jno715hfapkb;itime=561984746;kvsecure-darla=4-11-1%7Cysd%7C1;kvsecure=true;kvrs=pt:utility:ver:site:lu:pct:ydotcom:finance:0:qsp;kvssp=ssp;kvmn=y963904432;kvticker=duk;kvy-bucket=fd-qsp-seqmsg-stickyfooter%2Cfd-sticky-hdr-ctrl-copy;kvpgcolo=bf1;kvadtc_dvmktname=unknown;kvadtc_dvosplt=windows_10;kvadtc_dvbrand=google;kvadtc_dvtype=desktop;kvadtc_dvmodel=chrome_-_windows;kvrepo_dvosplt=windows_10;kvadtc_dvosversion=NT%2010.0;kvadtc_crmcc=UNKNOWN;kvadtc_crmnc=UNKNOWN;gdpr=0;gpp=DBAA;gpp_sid=-1;impref=16955619842212232147;imprefseq=2539902143044220;imprefts=1695561984;adclntid=1004;spaceid=95993639;link=',
+    clickPixel: ''
+  },
+  DeliveryServerTag: {
+    variables: {"tagId":"craftAdTag0.5158864779960366","srvreqid":"561984746","srvsrc":"as","srvlid":"6174685","srvcid":"441388","externalData":{"pubContext":{"zip":"${ZIP_CODE}"}}}
+  },
+  Platform: {
+    pixelServer: {
+      host: {
+        GLOBAL: "o.cmp.advertising.com"
+      },
+      path: {
+        simple: '/v3'
+      }
+    },
+    cdn: {
+      host: 'cdn.yahoomedia.net/'
+    }
+  },
+  Regs: {"gdpr":{"applies":"0","consent":""},"ccpa":{"privacy":""},"gpp":{"string":"DBAA","sectionId":"-1"},"downloadedImpressionPrepended":true},
+  Libraries: {
+    Delivr: {
+      url: 'https://cdn.yahoomedia.net/libraries/Delivr-2.10.0.js',
+      //url: 'https://jac-jill-prod-us-east-1.s3.amazonaws.com/Delivr-2.7.2.js',
+      //url: 'https://qa-cdn.cmp.advertising.com/libraries/Delivr-2.7.2.js',
+      //url: 'https://qa-cdn.cmp.advertising.com/libraries/Delivr-2.7.3-rc.1.js',
+      version: '2.10.0'
+    },
+    DelivrM: {
+      url: 'https://cdn.yahoomedia.net/libraries/DelivrM-2.10.0.js',
+      version: '2.10.0'
+    }
+  },
+  Format: {
+    directory: 'https://cdn.yahoomedia.net/formats/14b89621-a1bb-4a1d-af17-0352eed15ebf/2.4.2/',
+    baseDir: 'formats/14b89621-a1bb-4a1d-af17-0352eed15ebf/2.4.2/',
+    id: '14b89621-a1bb-4a1d-af17-0352eed15ebf',
+    version: '2.4.2',
+    library: {
+      url: '',
+      version: '',
+      hooks: { }
+    },
+    adManagerVersionsName: 'richAdManagerVersions',
+    adManagerName: 'richAdManager',
+    adConfigQueueName: 'richAdConfigQueue'
+  },
+  Creative: {
+    directory: 'https://cdn.yahoomedia.net/creatives/915ef233-4c27-477d-aad5-676f4488e489/10/',
+    assetPath: 'creatives/915ef233-4c27-477d-aad5-676f4488e489/10/',
+    id: '915ef233-4c27-477d-aad5-676f4488e489',
+    content: {"cadjs":{"name":"","mimeType":""},"author":"","backup":{"name":"","width":0,"height":0,"mimeType":""},"filter":[],"showAd":"Show Ad","closeAd":"Close Ad","customAd":false,"traceLog":false,"unitType":"Finance Button","adContent":{"base":{"html":{"name":""},"border":{"color":"#000000","hasBorder":false},"button":{"text":"Expand Ad","align":"TOP_LEFT","image":{"name":"","width":0,"height":0,"mimeType":""},"custom":"default","radios":"arrowsOut","useBuiltIn":true}},"expand":{"html":{"name":""},"width":728,"border":{"color":"#000000","hasBorder":false},"button":{"text":"Collapse Ad","align":"TOP_LEFT","image":{"name":"","width":0,"height":0,"mimeType":""},"custom":"default","radios":"arrowsUp","useBuiltIn":true},"height":500,"offsetX":0,"offsetY":0,"hideBase":true,"pushDown":false,"hasExpand":false},"initial":{"html":{"name":""},"width":500,"border":{"color":"#000000","hasBorder":false},"button":{"text":"Close Ad","align":"TOP_LEFT","image":{"name":"","width":0,"height":0,"mimeType":""},"custom":"default","radios":"arrowsDown","useBuiltIn":true},"height":500,"offsetX":0,"offsetY":0,"behavior":"Load Initial and Base together","autoclose":6,"frequency":{"behavior":"1"},"hasInitial":false},"simpleBanner":{"htmlFile":{"name":"index.html","size":{"width":300,"height":250}},"imageFile":{"name":"","width":0,"height":0,"mimeType":""},"imageFile2x":{"name":"","width":0,"height":0,"mimeType":""},"imageContent":false,"invisibleClick":false},"financeButton":{"buttonLogo":{"name":"","width":0,"height":0,"mimeType":""},"fullDisclaimer":"Availability subject to regulation","buttonTextlabel":"Start Trading >>","shortDisclaimer":"<b style=\"color:black;font-weight:bold;\">Plus500</b> CFD Service. Your capital is at risk","buttonBackground":"#010f8c","advertiserNameInMobile":""}},"tplInsert":{"name":"","label":"adInit","mimeType":""},"collapseAd":"Collapse Ad","labsInsert":{"name":"","label":"AD_INIT","mimeType":""},"isResponsive":true,"showOverride":false,"espressoInsert":{"name":"","label":"registerEspresso","mimeType":""},"backgroundColor":"#fafafc","espressoVersion":"Lite","customButtonLogo":{"name":"","width":600,"height":140,"mimeType":"image/png"},"customFullDisclaimer":"Availability subject to regulation","isTemplateControlled":true,"customButtonTextlabel":"Start Trading >>","customShortDisclaimer":"<b style=\"color:black;font-weight:bold;\">Plus500</b> CFD Service. Your capital is at risk","customButtonBackground":"#154479"},
+    library: {
+      espresso: {
+        lite:{
+          url: 'https://cdn.yahoomedia.net/libraries/Espresso-2.4.16.js',
+          version: '2.4.16'
+        },
+        video: {
+          url: 'https://cdn.yahoomedia.net/libraries/EspressoFull-2.4.16.js',
+          version: '2.4.16'
+        }
+      },
+       $AD: {
+         url: 'https://cdn.yahoomedia.net/libraries/AD-1.5.0.js',
+         version: '1.5.0'
+       }
+     },
+    containers: {
+      placement: {
+        type: "inlineDiv",
+        zIndex: 10000,
+        states: {
+          'default': {
+            width: parseInt('280', 10),
+            height: parseInt('55', 10)
+          },
+          breakoutFix: {
+            width: parseInt('280', 10),
+            height: parseInt('55', 10)
+          },
+          expand: {
+            width: parseInt('728', 10),
+            height: parseInt('500', 10),
+            push: 'false' === 'true'
+          },
+          initial:{
+            width: parseInt('500', 10),
+            height: parseInt('500', 10)
+          }
+        },
+        content: 'https://cdn.yahoomedia.net/formats/14b89621-a1bb-4a1d-af17-0352eed15ebf/2.4.2/labs.html',
+        'default': {
+          content: 'https://cdn.yahoomedia.net/creatives/915ef233-4c27-477d-aad5-676f4488e489/10/'
+        }
+      }
+    },
+    variation: {
+      name: ''
+    },
+    clicks: {
+      'clickthrough': {
+      url: 'https://www.plus500.com/?id=127336&tags=YahooExternal_sr+Desktop&pl=2'
+      }
+    },
+    events: {
+      'downloadedImpression': {
+        trackOnce: true,
+        interaction: false
+      },
+      '1272x328.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '1272x328.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '1272x328.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '1272x328.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '1272x328.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '160x600.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '160x600.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '160x600.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '160x600.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '160x600.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x1050.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '300x1050.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x1050.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x1050.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x1050.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x250.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '300x250.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x250.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x250.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x250.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x600.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '300x600.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x600.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x600.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '300x600.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '728x90.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '728x90.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '728x90.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '728x90.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '728x90.initial.close': {
+        trackOnce: false,
+        interaction: false
+      },
+      '970x250.base.expand': {
+        trackOnce: false,
+        interaction: true
+      },
+      '970x250.expand.contract': {
+        trackOnce: false,
+        interaction: false
+      },
+      '970x250.initial.autoClose': {
+        trackOnce: false,
+        interaction: false
+      },
+      '970x250.initial.autoOpen': {
+        trackOnce: false,
+        interaction: false
+      },
+      '970x250.initial.close': {
+        trackOnce: false,
+        interaction: false
+      }
+    }
+  },
+  DeliveryGroups: {"0":{"thirdPartyTracking":{"events":[],"clicks":[]},"clicks":{"clickthrough":{"target":"_blank","url":"https://www.plus500.com/?id=127336&tags=YahooExternal_sr+Desktop&pl=2"}}},"19736233":{"thirdPartyTracking":{"events":[],"clicks":[]},"clicks":{"clickthrough":{"target":"_blank","url":"https://www.plus500.com/?id=127336&tags=YahooExternal_sr+MobileWeb&pl=2"}}}}
+};
+;"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}!function(e){var t=function(){function e(){_classCallCheck(this,e),this.savedObjects=[],this.targetScope=window.top}return _createClass(e,[{key:"base",value:function(){}},{key:"expand",value:function(){}},{key:"initial",value:function(){}},{key:"onResize",value:function(){}},{key:"onReflow",value:function(){}},{key:"resetStates",value:function(){for(var e=this;0<this.savedObjects.length;)!function(){var t=e.savedObjects.pop(),n=t.originalStyles;"object"===_typeof(n)&&Object.keys(n).forEach(function(e){t.element.style[e]=n[e]})}();return!0}},{key:"updateStylesInClasses",value:function(e,t){var a=this,e=Array.isArray(e)?e:[e],r="object"===_typeof(t)?t:{};e.forEach(function(e){var o=a.targetScope.document.getElementsByClassName(e)||{};Object.keys(o).forEach(function(e){var t,n=o[e],e=Object.keys(r);n.getAttribute("data-index")?0===parseInt(n.getAttribute("data-index"),10)?((t=Object.assign({},r)).zIndex&&(t.zIndex=r.zIndex+1),a.saveState(n,e),e.forEach(function(e){n.style[e]=t[e]})):(a.saveState(n,e),e.forEach(function(e){n.style[e]=r[e]})):(a.saveState(n,e),e.forEach(function(e){n.style[e]=r[e]}))})})}},{key:"saveState",value:function(t){var n=this,e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:["zIndex"],e=Array.isArray(e)?e:[e];if(!t||"object"!==_typeof(t))return null;var o={element:t,originalStyles:{}};return e.forEach(function(e){o.originalStyles[e]=n.targetScope.getComputedStyle(t)[e]}),this.savedObjects.push(o),!0}},{key:"getHighestZIndex",value:function(e){var n=this,e=Array.isArray(e)?e:[e],o=0;return e.forEach(function(e){var t=n.targetScope.document.getElementsByClassName(e)||{};Object.keys(t).forEach(function(e){e=t[e],e=window.getComputedStyle(e).getPropertyValue("z-index");"auto"!==e&&o<e&&(o=e)})}),parseInt(o,10)}}]),e}();e.PublisherToolsBase=t,window.ACT=e}(window.ACT||{});;"use strict";!function(){var n="labs915ef233-4c27-477d-aad5-676f4488e489",s=window.ACT.adConfig[n],r=s.Creative.content.unitType;s.Creative.content.isResponsive="Billboard"===r&&s.Creative.content.isResponsive;var o,e,t,c,l,f,d,a,i,h,v,u=s.DeliveryServerTag.variables;function m(){var t,a,n=s.Creative.content.adContent,r={left:0,right:n.base.width,top:0,bottom:n.base.height};Object.keys(n).forEach(function(e){var t,a,i;if("collapse"!==e&&n[e].html&&""!==n[e].html.name)s.Publisher.isSafeframe&&(t=e,a=s.Creative.content.adContent,(i=s.Creative.containers.placement.states)[t]&&(i=i[t],0<a[t].offsetX?(i.width+=a[t].offsetX,i.offsetX=0):i.offsetX=a[t].offsetX,0<a[t].offsetY?(i.height+=a[t].offsetY,i.offsetY=0):i.offsetY=a[t].offsetY));else if("collapse"!==e){if("financeButton"===e||"simpleBanner"===e)return;delete s.Creative.containers.placement.states[e],n[e]=Object.assign({},n[e],{offsetX:0,offsetY:0,width:0,height:0})}"base"!==e&&(r.left=Math.min(r.left,n[e].offsetX),r.right=Math.max(r.right,n[e].offsetX+parseInt(n[e].width,10)),r.top=Math.min(r.top,n[e].offsetY),r.bottom=Math.max(r.bottom,n[e].offsetY+parseInt(n[e].height,10)))}),s.Publisher.isSafeframe?s.Creative.states=s.Creative.containers.placement.states:(t=s.Creative.content.adContent,a={x:r.left,y:r.top,width:r.right-r.left,height:r.bottom-r.top},s.Creative.containers.placement.zIndex=1e4,s.Creative.states=s.Creative.states||{},Object.keys(t).forEach(function(e){"financeButton"!==e&&"simpleBanner"!==e&&("collapse"!==e&&(s.Creative.containers.placement.states[e]={width:a.width,height:a.height}),"pushDown"in t[e]&&(s.Creative.containers.placement.states[e].push=t[e].pushDown),"base"===e?s.Creative.states.default={offsetX:0,offsetY:0,width:t.base.width,height:t.base.height}:s.Creative.states[e]={offsetX:t[e].offsetX,offsetY:t[e].offsetY,width:t[e].width,height:t[e].height})}))}function p(){var e=[];-1<["aol","msn","autoblog","engadget","huffpost","techcrunch"].indexOf(o.domain.name)&&!o.isOneCreativePreview?e.push("".concat(s.Format.directory).concat(o.domain.name,".min.js")):e.push("".concat(s.Format.directory,"catchAll.min.js")),""!==s.Creative.content.tplInsert.name&&e.push(s.Creative.directory+s.Creative.content.tplInsert.name),c(e,function(){window.ACT.tplInit[n](s)},{meta:{creativeId:"labs915ef233-4c27-477d-aad5-676f4488e489"}})}function g(e){if(i.afterAdvertInit=e,a=e,o.registerObject("advert",a.advert),o.registerObject("Delivr",a.libraryNamespace),o.registerObject("where",a.window),"Finance Button"===r)return o.registerObject("formatStorage",{storageEnabled:!1,get:function(){return""},set:function(){}}),void p();e=s.Format.library.version,e=new window.ACT[s.Creative.library.espresso.version].Storage({name:"format_storage_915ef233-4c27-477d-aad5-676f4488e489",storageConfig:{DATA_READY:p,use:"safeFrames",delivrVersion:e}}),o.registerObject("formatStorage",e)}function b(e){i.beforeAdvertInit=e}function C(e,t){var a,i=o.getObject("advert");"geom-update"===e&&(s.Publisher.isFlexframe&&i.eventBus.trigger("SAFEFRAME_GEOM_UPDATE"),(a=$sf.ext.inViewPercentage()/100)!==h&&(h=a,o.sendMessage("inViewPercentage_update",{state:a}))),"write-cookie"===e&&(v=!0),"register-update"!==e&&"register"!==e||(o.registerObject("darlaKey",t.key),v&&(v=!1,i.eventBus.trigger("SAFEFRAME_COOKIE_SAVED")))}function w(){function e(e){return void 0!==e}var t,a,i,n=(i=window.innerWidth,e(window.orientation)&&e(window.screen)&&(a=window.screen,t=Math.min(a.availWidth,a.availHeight),a=Math.max(a.availWidth,a.availHeight),i=90!==Math.abs(parseInt(window.orientation,10))?t:a),i),r=s.Creative.containers.placement.states;Object.keys(r).forEach(function(e){var t=r[e],a=t.width,i=t.height;n<a&&(t=n,i=parseInt(t/(a/i),10),r[e].width=t,r[e].height=i)})}function F(){var e=l(s).SafeFrameUtils;s.Publisher.isSafeframe=e.isInSafeFrame(),s.Publisher.isFlexframe=e.isInFlexFrame(),s.Publisher.isUnfriendlyFrame=o.isUnfriendlyFrame,s.uniqueId=9999*Math.random();var t=s.Creative.containers.placement.states.default,a=t.width,e=t.height,t=s.Creative.content.adContent;Object.assign(t.base,{width:a,height:e});var i,e=s.Creative.containers.placement.states;1272!==a&&970!==a||(s.Publisher.isSafeframe||(i={collapse:{width:a,height:36,offsetX:0,offsetY:0}},Object.assign(e,i),Object.assign(t,i)),i={width:a,height:500},e.expand&&(Object.assign(e.expand,i),Object.assign(t.expand,i)),e.initial&&(Object.assign(e.initial,i),Object.assign(t.initial,i)),s.Publisher.isFlexframe&&w()),"Finance Button"===r?(i=s.Creative.containers.placement.content.replace("labs.html","plugins/financeButton/financeButton.html"),s.Creative.containers.placement.content=i,window.ACT.FinanceButtonResponsePlugin[n].updateAdConfig(s)):"Simple Banner"===r&&window.ACT.SimpleBannerResponsePlugin[n].updateAdConfig(s),s.Format.library.hooks={beforeAdvertInit:b,onSafeFrameStatusUpdate:C,afterAdvertInit:g},m(),function(){if(o.isUnfriendlyFrame){for(var e=["collapse","initial","expand","breakoutFix","base"],t=0;t<e.length;t++)delete s.Creative.containers.placement.states[e[t]];s.Creative.content.adContent.initial.hasInitial=!1,s.Creative.content.adContent.expand.hasExpand=!1}}()}null!=u&&u.externalData&&u.externalData.pubContext&&u.externalData.pubContext.zip&&(""!==(e=u.externalData.pubContext.zip||"")&&-1===e.indexOf("ZIP_CODE")&&(s.User.geolocation.zip=e)),window.ACT.currentAds.push((t=window.ACT.utils,c=t.loadMultipleScripts,l=t.getVersionedNS,f=t.getAdManager,d=t.delivrNamespace,a={},h=0,v=!(i={}),s.Creative.library.espresso=(u=s.Creative.content.espressoVersion.toLowerCase(),s.Creative.library.espresso[u]),s.Format.library=(e=!!window.MRAID_ENV,t=!!window.mraid,u=s.Libraries,e||t?u.DelivrM:u.Delivr),void function(){var e=(e=document.getElementById(s.DeliveryServerTag.variables.tagId))||(e=document.getElementsByTagName("script"))[e.length-1],t="craftContainer_".concat(s.AdServer.cacheBuster);s.anchorDivId=t;var a=document.createElement("div");a.id=t,e.parentNode.insertBefore(a,e);var i=[s.Creative.library.espresso.url];switch(r){case"Finance Button":i.push("".concat(s.Format.directory,"plugins/financeButton/financeButton.response.plugin.min.js"));break;case"Simple Banner":i.push("".concat(s.Format.directory,"plugins/simpleBanner/simpleBanner.response.plugin.min.js"))}f(s)||(a=s.Format.adManagerVersionsName,(e=d[a])&&-1!==e.indexOf(s.Format.library.version)||(e=d[a]||[],(d[a]=e).push(s.Format.library.version),i.unshift(s.Format.library.url))),c(i,function(){!function(){o=new window.ACT[s.Creative.library.espresso.version].DelivrUtils(s);var e=f(s);F(),e.registerAd(s)}()},{meta:{creativeId:"labs915ef233-4c27-477d-aad5-676f4488e489"}})}()))}();;"use strict";function ownKeys(t,e){var n,a=Object.keys(t);return Object.getOwnPropertySymbols&&(n=Object.getOwnPropertySymbols(t),e&&(n=n.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),a.push.apply(a,n)),a}function _objectSpread(t){for(var e=1;e<arguments.length;e++){var n=null!=arguments[e]?arguments[e]:{};e%2?ownKeys(Object(n),!0).forEach(function(e){_defineProperty(t,e,n[e])}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(n)):ownKeys(Object(n)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(n,e))})}return t}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(n="Object"===n&&e.constructor?e.constructor.name:n)||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(e,t):void 0}}function _iterableToArray(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,a=new Array(t);n<t;n++)a[n]=e[n];return a}!function(){var e=window.ACT.utils.fetchCreativeId,S=window.ACT.constants.LABS_SAVEDATA,t="labs915ef233-4c27-477d-aad5-676f4488e489",T=t.match(/Creative/)?e():t,B={views:0},_=null,j=!1,M={},I={},P="default",F="expand",L="initial",k="collapse",D=P,N=!1;window.ACT.tplInit[T]=function(u){var i=u.Creative.content.adContent,e=i.base.width;N=i.expand&&i.expand.pushDown?i.expand.pushDown:N;var p=new window.ACT.publisherTools[T],t=window.ACT[u.Creative.library.espresso.version],n=t.DelivrUtils,t=new t.EventManager,w=new n(u),g=w.servingFrame,o=w.isSafeframe,v=w.isFlexFrame;function a(e){var t=window.ACT[u.Creative.library.espresso.version].Base,e=["[TPL]"].concat(_toConsumableArray(e));t.trace(e)}function r(e){w.sendMessage("stateChange",{state:e.meta.state,cacheBuster:u.AdServer.cacheBuster})}function s(e){return void 0!==e}function m(){var e,t,n=u.Creative.containers.placement.states[D];return v&&(t=D===P?"base":D,e=u.Creative.content.adContent[t].width,t=u.Creative.content.adContent[t].height,n.width=e,n.height=t),n}j=1272===e||970===e,window.traceLog=u.Creative.content.traceLog,w.registerMessage({topic:"containerEvent",meta:{state:F,cacheBuster:u.AdServer.cacheBuster}},r),w.registerMessage({topic:"containerEvent",meta:{state:P,cacheBuster:u.AdServer.cacheBuster}},r),_=w.getObject("formatStorage"),w.model.hasInitialized=!1;var e=m(),y={w:e.width,h:e.height};function b(e,t,n){var a=e>y.w?y.w:e,r=D===P?"base":D,e=u.Creative.content.adContent[r].width,r=u.Creative.content.adContent[r].height,r=s(t)&&s(n)?t/n:e/r;return parseInt(a/r,10)}function C(){var e,t,n=(w.isBreakout?w.craftContainerScope:window).innerWidth;return s(window.orientation)&&s(window.screen)&&(t=window.screen,e=Math.min(t.availWidth,t.availHeight),t=Math.max(t.availWidth,t.availHeight),n=90!==Math.abs(parseInt(window.orientation,10))?e:t),n}function c(){var a,i,o,s,e,t,n,r,c,l,h;function d(t,n){Object.keys(n).forEach(function(e){t.style[e]=n[e]})}function f(e){var t="none"!==e,n=t?"translate(-50%, -50%)":"none",e=t?"50%":0;d(a,{position:t?"absolute":"static",top:e,left:e,"-webkit-transform":n,"-moz-transform":n,"-o-transform":n,"-ms-transform":n})}u.Creative.content.isResponsive&&(a=w.sandbox,i=w.craftContainerElement,o=w.craftPlacementElement,s=w.craftFrameElement,v&&(e=m().width,t=m().height,y.w=e,y.h=t,n=$sf.ext.geom().self.w,r=$sf.ext.geom().self.h,n>y.w&&(y.w=Math.min(n,e),y.h=Math.min(r,t)),a.style.width="".concat(y.w,"px"),a.style.height="".concat(y.h,"px")),h=C(),w.isBreakout?(l=(c=function(){var e=[],t=w.craftContainerScope.innerWidth;-1<w.domain.name.indexOf("msn")&&(t=Math.max(629,t));for(var n=g.parentNode||g;null!=n&&-1<!n.tagName.toLowerCase().indexOf("body");){if(e.push(n),n.clientWidth<=t&&0!==n.clientWidth)return e;n=n.parentNode}return e}())[c.length-1].clientWidth,l=Math.min(h,l,y.w),l=-1<w.domain.name.indexOf("msn")&&l<=629?629:l,function(e){for(var t=0;t<e.length-2;t++)e[t].style.width="100%"}(c)):l=Math.min(h,y.w),w.isBreakout&&-1<w.domain.name.indexOf("aol")&&((h=window.top.document.getElementById("navrail-wrapper"))&&h.firstChild&&h.firstChild.clientWidth<=54&&(l-=20)),function(e){v&&(N=!0);var t,n=D===F&&N,a={height:"".concat(b(e),"px"),display:"block"};n||D===k||(t=(r=u.Creative.content.adContent.base).width,r=r.height,a.height="".concat(b(e,t,r),"px"));var r=i.parentNode;r&&"body"!==r.tagName.toLowerCase()&&(d(r,a),r.style.width="100%"),a=_objectSpread({width:"".concat(e,"px"),transition:"all 0.1s"},a),v||(a.margin="auto"),d(i,a),a={width:v?"".concat(e,"px"):"100%",height:v?"".concat(b(e),"px"):"inherit"},d(s,a),n||(a.height="".concat(b(e),"px")),a=_objectSpread({clip:""},a),d(o,a),v&&($sf.ext.geom().self.w>y.w?f():f("none"))}(l),w.isBreakout&&p.updateAdchoiceForBillboard&&p.updateAdchoiceForBillboard())}function l(e){var t,e=0<arguments.length&&void 0!==e?e:"none",a=w.craftPlacementElement,n=w.sandbox;v&&(e="none"===e?D:e,t=u.Creative.containers.placement.states[e].height,setTimeout(function(){var e=$sf.ext.geom().self.w;n.style.width="".concat(e,"px"),n.style.height="".concat(t,"px"),a.style.width="".concat(e,"px")},100)),p.onReflow();var r=10;j||(clearInterval(I.setClipFlow),I.setClipFlow=setInterval(function(){var e=a.style.width,t=a.style.height;function n(e){return 0<=e.indexOf("px")}e=n(e)?e:"".concat(i.base.width,"px"),t=n(t)?t:"".concat(i.base.height,"px"),t="rect(0 ".concat(e," ").concat(t," 0)"),r<0||!a?clearInterval(I.setClipFlow):a.style.clip!==t&&(a.style.clip=t),r--},100))}a("checking orientation",C());var h,d,f=function(){var e,t,n,a,r,i=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"none";!j||w.isUnfriendlyFrame&&!o||o&&!v||(e=w.craftContainerElement,t=w.craftFrameElement,n=w.sandbox,t.style.minHeight="30px",i="none"===i?D:i,i=u.Creative.containers.placement.states[i].height,a=i,(r=e&&e.parentNode?e.parentNode:null)&&"body"!==r.tagName.toLowerCase()&&(r.style.height="".concat(a,"px")),n&&(n.style.height="".concat(i,"px")),p.patchPageForResponsiveness&&p.patchPageForResponsiveness(),c(),p.updateContainerForBillboardOnStatesChange&&p.updateContainerForBillboardOnStatesChange(D))};function A(e){var t,n,a=w.craftPlacementElement,r=u.Creative.containers.placement.states[e],i=u.Creative.states[e];o?(t=a.style.width,n=a.style.height,t===r.width&&n===r.height||(a.style.width="".concat(r.width,"px"),a.style.height="".concat(r.height,"px"))):(e=u.Creative.states[P],t=i.offsetX<0?i.offsetX:0,n=i.offsetY<0?i.offsetY:0,r=i.offsetX<0?i.width+(e.width-e.offsetX):i.width+i.offsetX,i=i.offsetY<0?i.height+(e.height-e.offsetY):i.height+i.offsetY,a.style.left="".concat(t,"px"),a.style.top="".concat(n,"px"),a.style.height="".concat(i,"px"),a.style.width="".concat(r,"px"),D===P&&(a.style.width="inherit",a.style.height="inherit"))}function x(){A(D=P),p.base(),l(D),f(D)}function O(){D=k,p.collapse&&p.collapse(),f(D)}function E(){var e,t;w.notifyLabsThatTPLIsReady(),v||(w.craftContainerElement.style.margin="auto"),w.isOneCreativePreview&&(e=i[F].offsetY||0,t=i[L].offsetY||0,(e=Math.min(e,t))<0&&((t=w.craftContainerElement.parentNode)&&(t.style.marginTop="".concat(Math.abs(e),"px")))),w.notifyLabsThatTPLIsReady(),j&&(B.showAd?x:O)()}!0===_.storageEnabled?((d=-1<_.storageInUse.toLowerCase().indexOf("safe"))&&w.getObject("advert").eventBus.on("SAFEFRAME_COOKIE_SAVED",E),_&&(h=_.get("views"),B.views=h||0,B.views++,j&&(h=_.get("showAd"),B.showAd=null!==h&&0===h?0:1),_.set(B)),d||E()):E(),w.registerMessage("REQUEST_STORAGE_DATA",function(){w.sendMessage("STORAGE_DATA",{adData:B})}),w.registerMessage({topic:"containerEvent",meta:{state:L,cacheBuster:u.AdServer.cacheBuster}},function(){A(D=L),p.initial(),l(D),f(D)}),w.registerMessage({topic:"containerEvent",meta:{state:F,cacheBuster:u.AdServer.cacheBuster}},function(){A(D=F),p.expand(),l(D),f(D)}),w.registerMessage({topic:"containerEvent",meta:{state:P,cacheBuster:u.AdServer.cacheBuster}},x),a(" isFlexFrame->".concat(v)),j?(w.registerMessage(S,function(e){e=e.meta.meta.adData||{};Object.assign(B,e),_&&_.set(B)}),w.registerMessage({topic:"containerEvent",meta:{state:k,cacheBuster:u.AdServer.cacheBuster}},O),d=w.craftContainerScope&&!o?w.craftContainerScope:window,t.addEventListener(d,"resize",function(e){clearTimeout(M.resize),M.resize=setTimeout(function(){l(D),f(D)},500)})):v&&t.addEventListener(window,"resize",function(){l()}),w.isBreakout&&t.addEventListener(window,"beforeunload",function(){g&&g.parentNode&&(g.parentNode.style.height="",g.parentNode.style.width=""),Object.keys(M).forEach(function(e){clearTimeout(M[e])}),Object.keys(I).forEach(function(e){clearInterval(I[e])})})}}();;
+
+var adcount_6517846_1_=new Image();
+adcount_6517846_1_.src="https://24.ras.yahoo.com/adcount/3.0/1771.1/6517846/903301/16/AdId=19718201;BnId=1;ct=3571379951;st=4989;adcid=1;itime=562170538;reqtype=5;guid=7jno715hfapkb;;gdpr=0;gpp=DBAA;gpp_sid=-1;";

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- saved from url=(0133)https://s.yimg.com/jk/gtm/gtm_ns.html?id=GTM-K85MQ6N&cat=wlistclk&u1=5bbf5264b1c55a306d943761aaef09cf3338b5df061480bd142c151e75ba41cc -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>gtm_ns</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;;script-src &#39;sha256-R5cOQQv0ir0+YzwPRmelzz0a8I378cXU6dJv+THqQ4E=&#39; www.googletagmanager.com https://www.googleadservices.com;img-src www.googletagmanager.com https://events.xg4ken.com https://beacon.krxd.net https://pubads.g.doubleclick.net https://sp.analytics.yahoo.com https://5237.xg4ken.com https://s.amazon-adsystem.com www.google-analytics.com https://*.rfihub.com https://live.rezync.com https://secure.adnxs.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com https://trc.taboola.com https://www.facebook.com https://analytics.twitter.com https://t.co/i/adsct https://ad.doubleclick.net https://ext-inv-cdn.presage.io https://adservice.google.com/ https://alb.reddit.com https://beacon.lynx.cognitivlabs.com https://geo.yahoo.com/p https://www.emjcd.com https://pix.pub https://ade.googlesyndication.com https://apps.rokt.com https://analytics.tiktok.com https://tr.snapchat.com https://apps.rokt.com/api/conv; frame-src *.fls.doubleclick.net https://s.yimg.com https://apps.rokt.com; connect-src https://www.google.com https://googleads.g.doubleclick.net;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000">
+    <script async="" src="./gtm.js.descarga"></script><script>var allowedDomainList = [
+  "https://membership-ycs-cdn.s3.amazonaws.com",
+  "https://membership-cdn.s3.amazonaws.com",
+  "https://www.yahoo.com",
+  "https://dev.checkout.aol.com",
+  "https://www5.yahoo.com",
+  "https://dev.subscriptions.yahoo.com",
+  "https://qa.subscriptions.aol.com",
+  "https://subscriptions.aol.com",
+  "https://sports.yahoo.com",
+  "https://finance.yahoo.com",
+  "https://football.fantasysports.yahoo.com",
+  "https://overview.mail.yahoo.com",
+  "https://currently.att.yahoo.com",
+  "https://discover.aol.com",
+  "https://www.aol.com",
+  "https://www.aol.ca",
+  "https://www.aol.de",
+  "https://www.aol.co.uk",
+  "https://canary-www.aol.com",
+  "https://canary.www.aol.com",
+  "https://apps.rokt.com/",
+];
+     var isObject = function(obj){
+        return obj !== undefined && obj !== null && obj.constructor == Object;
+     }
+     var isElementPresent = function (value){
+         if(typeof value !== "undefined" && (typeof value === "object" && !value)) return true;
+         return false;
+     }
+    var triggerIframe = function(iframeSrc){
+        var iframe = document.createElement('iframe');
+        iframe.id=(new Date().valueOf()+Math.random()).toString(36);
+        iframe.style.display = "none";
+        iframe.src=iframeSrc
+        iframe.sandbox="allow-scripts allow-same-origin";
+        document.body.appendChild(iframe);
+        return false;
+    }
+    var alphaNumeric = /^[\w+\-]+$/;
+    var validRequestParam = function(param){
+            return alphaNumeric.test(param)?param:"";
+    }
+    var getUrlPath = function(path){
+        var pathexp = /\/\/[\w.-]*(?:\/([^?]*))/;
+         var match = pathexp.exec(path);
+         if (match != null && match.length > 1)
+             return match[1];
+         return "";
+     }
+    var getUrlQuery = function(url){
+      var query="";
+      if(url.indexOf("?") > 0){
+      	query = url.substr(url.indexOf("?") + 1);
+      }
+      return query;
+    }
+    var getUrlHostname = function(url){
+        var match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+        if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+            return match[2];
+        }
+             return "";
+    }
+    var getUrlParams = function(url) {
+        var params = {};
+        url = decodeURIComponent(url);
+        var parser = document.createElement('a');
+        parser.href = url;
+        var vars =  getUrlQuery(url).split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            if(pair[0]){
+               params[pair[0]] = pair[1] === undefined ? undefined : decodeURIComponent(pair[1]);
+              }
+        }
+        params["search"] = (getUrlQuery(url))? "?"+getUrlQuery(url):"";
+        params["protocol"] = parser.protocol;
+        params["hostname"] = getUrlHostname(url);
+        params["pathname"] = (getUrlPath(url))? "/"+getUrlPath(url):"";
+        params["port"] = parser.port;
+        return params;
+    }
+    var gtmObj = getUrlParams(encodeURIComponent(window.document.location.href));
+    var pageUrl = document.location.origin;
+    if (document.referrer) {
+        pageUrl = (typeof document.referrer === 'string')? document.referrer:"";
+    }
+    var originLoc = getUrlParams(pageUrl);
+    var dataLayer = [{
+        'originalLocation': originLoc.protocol + "//" +
+            originLoc.hostname +
+            originLoc.pathname +
+            originLoc.search
+    }];
+
+    var VERIZON_MEDIA_VENDOR_ID=25;
+
+    var triggerGtmEvent = function(eventObj){
+           __tcfapi('getTCData', 2, function(tcData,success){
+                if(!success || tcData === undefined || tcData.gdprApplies === undefined){
+                    console.log('tcfapi unavailable or failure');
+                    return;
+                }
+                if(tcData.gdprApplies === true){
+                    if(!tcData.vendor.consents[VERIZON_MEDIA_VENDOR_ID]){
+                           console.log('gdprApplies=true, permission denied');
+                           return;
+                    }
+                }
+                if (gtmObj.id === undefined) throw new Error(['Invalid Request']);
+                if (gtmObj.cat !== undefined){
+                     dataLayer.push({
+                        'cat': validRequestParam(gtmObj.cat)
+                    });
+                }
+                if (gtmObj.type !== undefined) {
+                    dataLayer.push({
+                        'type': validRequestParam(gtmObj.type)
+                    });
+                }
+                // THIS IS FOR PARTNERS PIXEL, FOR UNIQUE ORD ID
+                // example: doubleclick
+                var uniqueOrd = new Date().valueOf();
+                dataLayer.push({
+                        'ord': uniqueOrd
+                });
+                var gtmId = validRequestParam(gtmObj.id);
+                // Automate u1-u100 variables initialize
+                for (var i = 1; i <= 100; i++) {
+                    var key = 'u' + i;
+                    if (gtmObj[key] !== undefined) {
+                        var obj = {};
+                        obj[key] = validRequestParam(gtmObj[key]);
+                        dataLayer.push(obj);
+                    }
+                }
+                /* default event */
+               dataLayer.push({
+                 'event': 'uaevent',
+                 'eventCategory': 'default',
+                 'eventAction' : '',
+                 'eventLabel' : ''
+               });
+               if(eventObj !== undefined){
+                 // enable event tracking
+                 // dataGtm elm:btn;
+                 var eventLabel = '';
+                 if(eventObj.eventHref !== undefined){
+                    eventLabel = eventObj.eventHref;
+                 }
+                 if(eventObj.dataGtm !== undefined){
+                   var dGtmObj = eventObj.dataGtm.split(';');
+                   if(dGtmObj[0]){
+                       var elmPair = dGtmObj[0].split(":");
+                       if(elmPair[0]){
+                         dataLayer.push({
+                         'event': 'eventTracking',
+                         'eventCategory':'',
+                         'eventAction':validRequestParam(elmPair[1]),
+                         'eventLabel': eventLabel
+                         });
+                       }
+                   }
+                 }
+               }
+
+                (function(w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        'gtm.start': new Date().getTime(),
+                        event: 'gtm.js'
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l !== 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', gtmId);
+            },[VERIZON_MEDIA_VENDOR_ID]);
+    }
+    // adding user consent scoping
+    try {
+       // added global scope
+       window ['gtag_enable_tcf_support'] = true;
+        (function() {
+            //start here at our window
+            var frame = window;
+            var cmpFrame;
+            var cmpCallbacks = {};
+            while(frame) {
+              try {
+                /**
+                 * throws a reference error if no frames exist
+                 */
+                if (frame.frames['__tcfapiLocator']) {
+                  cmpFrame = frame;
+                  break;
+                }
+              } catch(ignore) {}
+
+              if(frame === window.top) {
+                break;
+              }
+              frame = frame.parent;
+            }
+            // CMP API's __tcfapi call
+            window.__tcfapi = function(cmd, version, callback, arg) {
+              if (!cmpFrame) {
+                callback({msg: 'CMP not found'}, false);
+              } else {
+                var callId = Math.random() + '';
+                var msg = {
+                  __tcfapiCall: {
+                    command: cmd,
+                    parameter: arg,
+                    version: version,
+                    callId: callId,
+                  },
+                };
+                /**
+                 * map the callback for lookup on response
+                 */
+                cmpCallbacks[callId] = callback;
+                cmpFrame.postMessage(msg, '*');
+              }
+            };
+            function postMessageHandler(event) {
+            /**
+              * when we get the return message, call the mapped callback
+              */
+              var json = {};
+              try {
+                /**
+                  * if this isn't valid JSON then this will throw an error
+                  */
+                json = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+
+              } catch (ignore) {}
+              var payload = json.__tcfapiReturn;
+              if (payload) {
+                /**
+                  * messages we care about will have a payload
+                  */
+                if (typeof cmpCallbacks[payload.callId] === 'function') {
+                  /**
+                   * call the mapped callback and then remove the reference
+                   */
+                  cmpCallbacks[payload.callId](payload.returnValue, payload.success);
+                  cmpCallbacks[payload.callId] = null;
+                }
+              }
+            }
+            window.addEventListener('message', postMessageHandler, false);
+       }());
+       /* trigger gtm even method */
+       triggerGtmEvent();
+
+    } catch (e) {
+         console.log(e);
+    }
+    try{
+        // listener from allowed parent domains
+        window.addEventListener('DOMContentLoaded',function() {
+         // Create IE + others compatible event handler
+         var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+         var eventListener = window[eventMethod];
+         var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+            eventListener(messageEvent,function(e){
+                if(window.allowedDomainList.indexOf(e.origin) === -1) return;
+                // validate e.data as JSON object
+                var data ={};
+                try {
+                    data = typeof e.data === 'string' ? JSON.parse(e.data) : JSON.parse(JSON.stringify(e.data));
+                    } catch (ignore) {
+                        return;
+                }
+                // iframeSrc, eventHref && dataGtm
+                if(data.iframeSrc !== undefined && data.eventHref !== undefined){
+                    var eventHref = data.eventHref;
+                    var collectEventLink = getUrlParams(eventHref);
+                    var dataGtm = "";
+                    if(data.dataGtm !== undefined){
+                        dataGtm = data.dataGtm;
+                    }
+                    if(collectEventLink.pathname !== undefined){
+                        var eventObj = {"eventHref":encodeURIComponent(eventHref),
+                                        "dataGtm":dataGtm};
+                        triggerGtmEvent(eventObj);
+                    }
+                }
+            },false);
+        });
+    } catch(e){
+        // console.log('Invalid post message invocation');
+    }
+</script>
+</head>
+<body></body></html>

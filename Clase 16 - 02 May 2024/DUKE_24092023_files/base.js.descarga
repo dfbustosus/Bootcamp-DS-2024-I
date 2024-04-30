@@ -1,0 +1,94 @@
+"use strict";
+
+(function () {
+  function byId(id) {
+    return document.getElementById(id);
+  }
+
+  var adBase = byId('adBase');
+  var adButton = byId('adButton');
+  var adButtonTxt = byId('buttonTxt');
+  var disclaimerShort = byId('disclaimerShort');
+  var disclaimerFull = byId('disclaimerFull');
+  var adButtonImg = byId('adButtonImg');
+  var hoverDelay = 300;
+  var visbiletimer = null;
+  var trackingPrefix = '';
+  var _window = window,
+      $AD = _window.$AD;
+
+  function setFormatTrackingPrefix() {
+    var _$AD$config$Creative$ = $AD.config.Creative.containers.placement.states["default"],
+        width = _$AD$config$Creative$.width,
+        height = _$AD$config$Creative$.height;
+    trackingPrefix = "".concat(width, "x").concat(height);
+  }
+
+  function updatePageContent() {
+    var financeButton = $AD.config.Creative.content.adContent.financeButton;
+    adButton.style.backgroundColor = financeButton.buttonBackground;
+    adButtonTxt.innerHTML = financeButton.buttonTextlabel;
+    disclaimerShort.innerHTML = financeButton.shortDisclaimer;
+    disclaimerFull.innerHTML = financeButton.fullDisclaimer;
+    var imgSrc = financeButton.buttonLogo.name;
+
+    if (imgSrc !== '') {
+      adButtonImg.src = $AD.config.Creative.directory + imgSrc;
+    } else {
+      adButtonImg.parentNode.removeChild(adButtonImg);
+    }
+  }
+
+  function showDisclaimerContent() {
+    $AD.expand({
+      state: 'expand',
+      cacheBuster: $AD.config.AdServer.cacheBuster,
+      overrides: {
+        eventName: "".concat(trackingPrefix, ".base.expand")
+      }
+    });
+    disclaimerFull.style.display = 'block';
+  }
+
+  function showFullDisclaimer() {
+    clearTimeout(visbiletimer);
+    visbiletimer = setTimeout(showDisclaimerContent, hoverDelay);
+  }
+
+  function hideDisclaimerContent() {
+    $AD.contract({
+      state: 'default',
+      cacheBuster: $AD.config.AdServer.cacheBuster,
+      overrides: {
+        eventName: "".concat(trackingPrefix, ".expand.contract")
+      }
+    });
+    disclaimerFull.style.display = 'none';
+  }
+
+  function hideFullDisclaimer() {
+    clearTimeout(visbiletimer);
+    visbiletimer = setTimeout(hideDisclaimerContent, hoverDelay);
+  }
+
+  function clickAction() {
+    $AD.click('clickthrough');
+  }
+
+  function bindActionListener() {
+    if (disclaimerFull.innerHTML !== '') {
+      disclaimerShort.addEventListener('mouseenter', showFullDisclaimer);
+      disclaimerShort.addEventListener('mouseleave', hideFullDisclaimer);
+    }
+
+    adBase.addEventListener('click', clickAction, false);
+  }
+
+  function initAd() {
+    setFormatTrackingPrefix();
+    updatePageContent();
+    bindActionListener();
+  }
+
+  $AD.ready(initAd);
+})();
