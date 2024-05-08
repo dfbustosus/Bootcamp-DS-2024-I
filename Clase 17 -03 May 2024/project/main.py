@@ -1,3 +1,4 @@
+# python -m pip install fastapi uvicorn
 from fastapi import FastAPI
 from app.api import endpoints
 
