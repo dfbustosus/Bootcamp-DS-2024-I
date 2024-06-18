@@ -1,0 +1,15 @@
+name: case_18.3
+channels:
+- anaconda-fusion
+- defaults
+dependencies:
+- statsmodels
+- seaborn
+- pandas
+- numpy
+- matplotlib
+- opencv
+- scikit-learn
+- tensorflow
+- keras
+- pillow
