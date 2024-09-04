@@ -15,7 +15,6 @@ inventory = {
     "item1": Item(name="Item 1", description="Description for Item 1", price=9.99, tax=0.18),
     "item2": Item(name="Item 2", description="Description for Item 2", price=14.99, tax=0.18),
 }
-
 # Get all items
 @router.get("/items/")
 async def read_items():
