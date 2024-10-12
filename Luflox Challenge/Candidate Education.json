@@ -1,0 +1,19 @@
+{
+    "education": [
+        {
+            "endDate": {
+                "seconds": 1419573600,
+                "nanoseconds": 0
+            },
+            "degree": "BA/BS",
+            "status": "COMPLETED",
+            "institute": "Universidad Tecmilenio",
+            "career": "Mechatronics, Robotics, and Automation Engineering",
+            "startDate": {
+                "seconds": 1262584800,
+                "nanoseconds": 0
+            }
+        }
+    ],
+    "id": "Jk5H3jBQ8sJo6oLak7ow"
+}

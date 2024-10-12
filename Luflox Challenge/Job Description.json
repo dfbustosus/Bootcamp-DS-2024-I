@@ -1,0 +1,60 @@
+{
+    "id": "EGTJypSNJtQAB8MIIR8J",
+    "responsibilities": [
+        "Advocate for the use of cutting-edge technology to build intelligent and scalable products.",
+        "Act as a technology partner for our clients from inception to completion while architecting reusable front-end systems by understanding their needs and translating requirements into world-class design.",
+        "Responsible for delivering high-quality applications.",
+        "Act as a relationship builder with direct communication with stakeholders, you will also drive internal initiatives and objectives.",
+        "Working on projects that will allow you to develop your skills and gain exposure to multinational brands.",
+        "Partner with multidisciplinary teams located across the world (Technical Writing, User Experience, Product Management, and Project Management) to solve challenging problems."
+    ],
+    "interviews": [
+        "30-minute screening meeting + 15-minute English assessment.",
+        "15-minute AI automated Career Questionnaire.",
+        "45-minute account manager interview."
+    ],
+    "status": "ACTIVE",
+    "offerRelocation": false,
+    "salary": "5000",
+    "currency": "USD",
+    "paymentFrequency": "MONTHLY",
+    "type": "FULL-TIME",
+    "date": {
+        "seconds": 1713157200,
+        "nanoseconds": 0
+    },
+    "preferred": [
+        "BS/MS in Computer Science, Engineering, or a related subject.",
+        "Experience with React, Node, SQL/NoSQL.",
+        "A code repository you can share with the team, showcasing your contributions to open source projects is a plus.",
+        "Experience with AWS."
+    ],
+    "role": "Senior Java Developer ",
+    "creation": {
+        "date": {
+            "seconds": 1706018118,
+            "nanoseconds": 837000000
+        },
+        "author": "YC2Z1e0Idjjo2kmVuaj1"
+    },
+    "stack": [
+        "Java",
+        "Python",
+        "AWS",
+        "Spring boot"
+    ],
+    "description": "We’re looking for a Java Engineer SR to join a global digital services company helping mid-size to Fortune 500 companies build, scale, and deliver high-quality digital products and services.",
+    "requirements": [
+        "Strong Client Management experience.",
+        "Hands-on and leadership experience in developing secure and scalable enterprise applications.",
+        "5+ years of experience with Java.",
+        "2+ years of experience with Java 8, 11,17, Javascript and Python.",
+        "Experience with Spring Boot, Core, and Cloud.",
+        "Passion and experience building web-based technology products or applications.",
+        "Strong notions on the principles of microservices patterns and design patterns.",
+        "Knowledge in non-relational databases: DynamoDB and MongoDB.",
+        "Advanced English.",
+        "Argentina resident."
+    ],
+    "isReleasable": false
+}

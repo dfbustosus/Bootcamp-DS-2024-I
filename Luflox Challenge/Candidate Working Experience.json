@@ -1,0 +1,138 @@
+{
+    "experiences": [
+        {
+            "company": "Luflox",
+            "positionType": "FULL-TIME",
+            "roles": [
+                {
+                    "role": "DevOps Engineer",
+                    "responsibilities": [
+                        "Architecting, building, and improving the scalability of our services and infrastructure.",
+                        "Using Infrastructure-as-Code to build and improve the cloud infrastructure.",
+                        "Improving observability (Logging, monitoring & alerting) using Elastic.",
+                        "Improving high availability and disaster recovery planning, implementation, and testing.",
+                        "Analyzing platform and infrastructure usage and performance metrics and develop capacity plans.",
+                        "Providing L2 - L3 support for incidents by troubleshooting infrastructure and application issues including on-call support as part of the team rotation schedule.",
+                        "Supporting engineering and business teams to resolve any issues they encounter around infrastructure and development.",
+                        "Documenting in Confluence. ",
+                        "Collaborating with other DevOps and Product Operations team members.",
+                        "Automating CI/CD pipelines & processes using Jenkins to rapidly deploy applications & services with quality, auditability, governance, and platform availability in mind.",
+                        "Working with 3rd party infrastructure vendors.",
+                        "Managing AWS environments.",
+                        "Managing and maintaining RDS and EC2 instances.",
+                        "Creating and managing S3 instances.",
+                        "Creating and managing users, roles and policies on IAM via Terraform and Github.",
+                        "Weekly application deployments via Harness.",
+                        "Ingesting data to Snowflake databases.",
+                        "Working with Aurora PostgreSQL database.",
+                        "Using Redis.",
+                        "Using Kafka.",
+                        "Using Jira and Slack.",
+                        "Implementing Agile Methodologies."
+                    ],
+                    "startDate": {
+                        "seconds": 1672639200,
+                        "nanoseconds": 0
+                    },
+                    "endDate": {
+                        "seconds": 1703829600,
+                        "nanoseconds": 0
+                    },
+                    "description": "Working on a customer service AI multi tenant platform."
+                }
+            ],
+            "positionModality": "REMOTE"
+        },
+        {
+            "company": "Akvelon INC",
+            "positionModality": "REMOTE",
+            "positionType": "FULL-TIME",
+            "roles": [
+                {
+                    "description": "Working on an internal repository inside an Azure platform called “Azure One” for Microsoft that allows users to build processes and give support to internal tickets.",
+                    "startDate": {
+                        "seconds": 1646114400,
+                        "nanoseconds": 0
+                    },
+                    "endDate": {
+                        "seconds": 1669788000,
+                        "nanoseconds": 0
+                    },
+                    "role": "Azure DevOps Engineer ",
+                    "responsibilities": [
+                        "Monitoring and maintaining huge builds of the platform.",
+                        "Investigating build issues and fixing existing builds of projects.",
+                        "Configuring and executed CI/CD pipelines for the project: Azure One.",
+                        "Implementing Docker and Kubernetes containers in the infrastructure created by the development team.",
+                        "Working on development for upgrades or updates to the pipelines using Kanban boards.",
+                        "Changing pipelines and builds through Azure Board and Git for all the open tickets.",
+                        "Working with branching on Git and service tickets.",
+                        "Implementing Agile Methodologies."
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "NXP Semiconductors",
+            "positionModality": "REMOTE",
+            "positionType": "FULL-TIME",
+            "roles": [
+                {
+                    "description": "Working on an internal R&D project that focuses on virtualization. ",
+                    "role": "DevOps Virtualization Specialist",
+                    "responsibilities": [
+                        "Creating and deploying new virtual redhat machines for Junior engineers to work on their projects and designs.",
+                        "Maintaining, improving and developing virtual environments.",
+                        "Working with Linux, Docker, Kubernetes and AWS for creation of the infrastructure of the NXP APP.",
+                        "Working with Bash scripting, C and .NET for coding and programming.",
+                        "Deploying updates via Ansible playbooks or more recently via Salt Cloud. ",
+                        "Integrating through Jenkins and teamcity.",
+                        "Developing improvements and deploying them.",
+                        "Supporting engineers via ServiceNow tickets. ",
+                        "Merging old company’s name and infrastructure into the new one (Freescale to NXP).",
+                        "Migrating thousands of users to a new OS Version.",
+                        "Deploying new configuration to Vmware hosts.",
+                        "Implementing Agile Methodologies."
+                    ],
+                    "endDate": {
+                        "seconds": 1646114400,
+                        "nanoseconds": 0
+                    },
+                    "startDate": {
+                        "seconds": 1488348000,
+                        "nanoseconds": 0
+                    }
+                }
+            ]
+        },
+        {
+            "roles": [
+                {
+                    "responsibilities": [
+                        "Keeping all infrastructure secure, updating and securing configurations.",
+                        "Installing patches and solving security tickets.",
+                        "Engineering, implementing and monitoring security measures for the protection of computer systems, networks and information.",
+                        "Identifying and defining system security requirements.",
+                        "Configuring and troubleshooting security infrastructure devices.",
+                        "Developing technical solutions and new security tools to help mitigate security vulnerabilities and automate repeatable tasks.",
+                        "Using Redhat Linux to support and powers software and technologies for automation.\n"
+                    ],
+                    "role": "Infrastructure Specialist",
+                    "startDate": {
+                        "seconds": 1525150800,
+                        "nanoseconds": 0
+                    },
+                    "description": "Working for the hotel industry supporting the security systems for Marriott Hotel in Mexico.",
+                    "endDate": {
+                        "seconds": 1559278800,
+                        "nanoseconds": 0
+                    }
+                }
+            ],
+            "company": "IBM Mexico",
+            "positionModality": "REMOTE",
+            "positionType": "FULL-TIME"
+        }
+    ],
+    "id": "Jk5H3jBQ8sJo6oLak7ow"
+}
