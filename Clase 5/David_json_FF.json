@@ -1,0 +1,25 @@
+{
+    "name": "David",
+    "age": 24,
+    "city": "CH",
+    "languages": [
+        "English",
+        "Spanish",
+        "French"
+    ],
+    "pets": 3,
+    "dogs": [
+        {
+            "name": "Ringo",
+            "age": 5
+        },
+        {
+            "name": "Bobby",
+            "age": 7
+        },
+        {
+            "name": "Sam",
+            "age": 10
+        }
+    ]
+}
